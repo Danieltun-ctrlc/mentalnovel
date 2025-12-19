@@ -9,11 +9,8 @@ import {
   EyeOff,
   Brain,
   ArrowRight,
-  RefreshCw,
-  ChevronRight,
   Play,
   PenTool,
-  AlertTriangle,
   BookOpen,
   X,
 } from "lucide-react";
@@ -637,7 +634,7 @@ const LessonCard = ({
           </h2>
           <div className="w-full h-px bg-gray-300"></div>
           <p className="text-lg text-gray-700 font-serif italic">
-            "{lesson.message}"
+            &ldquo;{lesson.message}&rdquo;
           </p>
           <div className="bg-yellow-50 border-2 border-yellow-200 p-4 w-full rounded-sm">
             <span className="text-xs font-bold tracking-widest text-yellow-800 uppercase block mb-2">
@@ -667,12 +664,14 @@ const IntroScene = ({
   onStart: () => void;
   isExiting: boolean;
 }) => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [particles, setParticles] = useState<
     { id: number; left: string; top: string; delay: string; duration: string }[]
   >([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const generated = Array.from({ length: 15 }).map((_, i) => ({
       id: i,
@@ -832,7 +831,8 @@ const IntroScene = ({
                   animationDelay: "5.0s",
                 }}
               >
-                "Some mornings feel heavier than the bag on my shoulders..."
+                &ldquo;Some mornings feel heavier than the bag on my
+                shoulders...&rdquo;
               </p>
               <div
                 className="flex justify-center animate-slide-up"
